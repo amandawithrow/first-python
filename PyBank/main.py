@@ -18,18 +18,22 @@ with open(bank_csv, 'r') as csvfile:
     
     #skip header row
     header = next(csvreader)
-    
+
     #Loop through data to count rows and get net total profit/loss
     for row in csvreader:
         months += 1
         month_total = float(row[1])
         net_total = net_total + month_total
 
+#calculate net average profit/loss
+avg_profit = round(net_total/months, 2)
+
 #print summary
 print("Finanacial Analysis")
 print("---------------------------------")
 print(f"Total Months: {months}")
 print(f"Total: {net_total}")
+print(f"Average Change: {avg_profit}")
 
 
 
