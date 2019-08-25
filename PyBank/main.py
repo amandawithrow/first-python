@@ -50,7 +50,7 @@ with open(bank_csv, 'r') as csvfile:
 
 #Find Greatest increase in profits
 maxpos = profit.index(max(profit))
-money = max(profit)
+minpos = profit.index(min(profit))
 
 
 
@@ -61,6 +61,6 @@ print(f"Total Months: {months}")
 print(f"Total: {net_total}")
 print(f"Average Change: {avg_profit}")
 print(f"Greatest Increase in Profits: {calendar[maxpos]}: {profit[maxpos]}")
-
+print(f"Greatest Decrease in Profits: {calendar[minpos]}: {profit[minpos]}")
 
 
