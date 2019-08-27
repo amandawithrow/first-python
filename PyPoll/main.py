@@ -29,6 +29,7 @@ with open(election_csv, 'r') as csvfile:
 #sort list alphabetically
 candidates.sort()
 
+
 #print summary table
 print("Election Results")
 print("-------------------------")
@@ -60,7 +61,7 @@ while x < total_votes:
 
 print("-------------------------")
 
-#find max value in dictionary
+#find max value in dictionary so we can declare a winner
 def keymaxval(d):
     v = list(d.values())
     k = list(d.keys())
@@ -68,3 +69,16 @@ def keymaxval(d):
 
 print(f"Winner: {keymaxval(polling)}")
 print("-------------------------")
+
+#print to file
+file = open("output.txt", "w")
+file.write("Election Results \r")
+file.write("-------------------------\r")
+file.write(f"Total Votes: {total_votes}\r")
+file.write("-------------------------\r")
+for k, v in polling.items():
+    file.write(f'{k}: {round(v/total_votes*100, 2)}% ({v})\r')
+file.write("-------------------------\r")
+file.write(f"Winner: {keymaxval(polling)}\r")
+file.write("-------------------------\r")
+file.close()
