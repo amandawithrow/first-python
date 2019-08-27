@@ -63,4 +63,14 @@ print(f"Average Change: {avg_profit}")
 print(f"Greatest Increase in Profits: {calendar[maxpos]}: {profit[maxpos]}")
 print(f"Greatest Decrease in Profits: {calendar[minpos]}: {profit[minpos]}")
 
+#print summary to file
+with open("output.txt", "a") as w:
+    print("Finanacial Analysis", file=w)
+    print("---------------------------------", file=w)
+    print(f"Total Months: {months}", file=w)
+    print(f"Total: {net_total}", file=w)
+    print(f"Average Change: {avg_profit}", file=w)
+    print(f"Greatest Increase in Profits: {calendar[maxpos]}: {profit[maxpos]}", file=w)
+    print(f"Greatest Decrease in Profits: {calendar[minpos]}: {profit[minpos]}", file=w)
+
 
