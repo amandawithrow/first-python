@@ -54,7 +54,7 @@ maxpos = profit.index(max(profit))
 minpos = profit.index(min(profit))
 
 #print summary
-print("Finanacial Analysis")
+print("Financial Analysis")
 print("---------------------------------")
 print(f"Total Months: {months}")
 print(f"Total: {net_total}")
