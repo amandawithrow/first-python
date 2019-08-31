@@ -27,7 +27,6 @@ with open(bank_csv, 'r') as csvfile:
 
     #start with first row, so that first iteration of loop has something to compare profit/loss to
     first_row = next(csvreader)
-    print(first_row)
     months += 1
     month_total = float(first_row[1])
     net_total = net_total + month_total
@@ -45,15 +44,13 @@ with open(bank_csv, 'r') as csvfile:
         profit.append(int(row[1]) - prev)
         prev = int(row[1])
         
-
-
 #calculate net average profit/loss
-avg_profit = round(net_total/months, 2)
+sum_profit= sum(profit)
+avg_profit = round(sum_profit/months, 2)
 
 #Find Greatest increase in profits
 maxpos = profit.index(max(profit))
 minpos = profit.index(min(profit))
-
 
 #print summary
 print("Finanacial Analysis")
