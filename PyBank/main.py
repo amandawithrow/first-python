@@ -64,7 +64,7 @@ print(f"Greatest Decrease in Profits: {calendar[minpos]}: {profit[minpos]}")
 
 #print summary to file
 with open("output.txt", "a") as w:
-    print("Finanacial Analysis", file=w)
+    print("Financial Analysis", file=w)
     print("---------------------------------", file=w)
     print(f"Total Months: {months}", file=w)
     print(f"Total: {net_total}", file=w)
