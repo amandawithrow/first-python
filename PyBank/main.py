@@ -10,6 +10,8 @@ months = 0
 #declare variable for total profit/loss
 net_total = 0
 
+#declare variable to store previous month profit/loss to find change
+prev = 0
 #declare lists to find greatest increase and decrease later
 calendar = []
 profit = []
@@ -23,35 +25,34 @@ with open(bank_csv, 'r') as csvfile:
     #skip header row
     header = next(csvreader)
 
+    #start with first row, so that first iteration of loop has something to compare profit/loss to
+    first_row = next(csvreader)
+    print(first_row)
+    months += 1
+    month_total = float(first_row[1])
+    net_total = net_total + month_total
+    calendar.append(first_row[0])
+    profit.append(int(first_row[1]) - prev)
+    prev = int(first_row[1])
+
     #Loop through data to count rows and get net total profit/loss
     for row in csvreader:
         
         months += 1
         month_total = float(row[1])
         net_total = net_total + month_total
+        calendar.append(row[0])
+        profit.append(int(row[1]) - prev)
+        prev = int(row[1])
         
 
 
 #calculate net average profit/loss
 avg_profit = round(net_total/months, 2)
 
-with open(bank_csv, 'r') as csvfile:
-    
-    # Split the data on commas
-    csvreader = csv.reader(csvfile, delimiter=',')
-    
-    #skip header row
-    header = next(csvreader)
-
-    #Loop through data to count rows and get net total profit/loss
-    for row in csvreader:
-        calendar.append(row[0])
-        profit.append(int(row[1]))
-
 #Find Greatest increase in profits
 maxpos = profit.index(max(profit))
 minpos = profit.index(min(profit))
-
 
 
 #print summary
